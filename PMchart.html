@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PM2.5 Sensor Data</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: black;
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh; /* Ensure the body takes up the full viewport height */
+        }
+        h1 {
+            margin-bottom: 5px; /* Reduces space between title and sensor data */
+            font-size: clamp(20px, 5vw, 40px); /* Scales between 20px and 40px based on viewport width */
+        }
+        .data-container {
+            text-align: center; /* Centers the text inside the container */
+            margin-top: 5px; /* Reduces space below the title */
+        }
+        .data-item {
+            font-size: clamp(14px, 3vw, 24px); /* Scales between 14px and 24px based on viewport width */
+            margin: 5px 10px 5px 0; /* Adds right margin to create space between items */
+            display: inline-block; /* Ensures the text is centered properly */
+        }
+        .chart-container {
+            flex: 1; /* Allows the chart container to take up remaining vertical space */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        canvas {
+            background-color: black;
+            width: 100% !important; /* Ensures the canvas takes up full width */
+            height: 100% !important; /* Ensures the canvas takes up full height */
+        }
+    </style>
+</head>
+<body>
+    <h1>PM2.5 Sensor Data</h1>
+    <div class="data-container" id="sensor-data">
+        <div class="data-item">Supply PM2.5: <span id="pm25-sensor1">Loading...</span> µg/m³</div>
+        <div class="data-item">Room PM2.5: <span id="pm25-sensor2">Loading...</span> µg/m³</div>
+    </div>
+    <div class="chart-container">
+        <canvas id="pm25Chart"></canvas>
+    </div>
+
+    <script>
+        const apiUrlSensor1 = 'https://ezdata2.m5stack.com/api/v2/48ca433a1dc0/dataMacByKey/raw';
+        const apiUrlSensor2 = 'https://ezdata2.m5stack.com/api/v2/48CA433A3AA0/dataMacByKey/raw';
+
+        const ctx = document.getElementById("pm25Chart").getContext("2d");
+
+        const chartData = {
+            labels: [],
+            datasets: [
+                {
+                    label: "Supply PM2.5 (µg/m³)",
+                    borderColor: "red",
+                    data: [],
+                    fill: false,
+                    tension: .1
+                },
+                {
+                    label: "Room PM2.5 (µg/m³)",
+                    borderColor: "blue",
+                    data: [],
+                    fill: false,
+                    tension: .1
+                }
+            ]
+        };
+
+        const chart = new Chart(ctx, {
+            type: "line",
+            data: chartData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false, /* Allows the chart to stretch vertically */
+                scales: {
+                    x: {
+                        type: 'category',
+                        title: { display: true, text: 'Time', color: 'white' },
+                        ticks: { color: 'gray' },
+                        grid: { color: 'gray' }
+                    },
+                    y: {
+                        title: { display: true, text: 'PM2.5 (µg/m³)', color: 'white' },
+                        ticks: { color: 'gray' },
+                        grid: { color: 'gray' },
+                        min: 0,
+                        max: 40
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: 'white'
+                        }
+                    }
+                }
+            }
+        });
+
+        async function fetchSensorData() {
+            try {
+                const fetchData = async (url) => {
+                    const response = await fetch(url);
+                    if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+                    const data = await response.json();
+                    if (!data || !data.data || typeof data.data.value !== 'string') throw new Error("Invalid data structure");
+                    const pm25Match = data.data.value.match(/pm2\.5\\":(\d+\.?\d*)/);
+                    if (!pm25Match) throw new Error("PM2.5 data missing");
+                    return parseFloat(pm25Match[1]);
+                };
+
+                const [pm25ValueSensor1, pm25ValueSensor2] = await Promise.all([
+                    fetchData(apiUrlSensor1),
+                    fetchData(apiUrlSensor2)
+                ]);
+
+                document.getElementById('pm25-sensor1').textContent = pm25ValueSensor1.toFixed(3);
+                document.getElementById('pm25-sensor2').textContent = pm25ValueSensor2.toFixed(3);
+
+                const timestamp = new Date().toLocaleTimeString();
+                chartData.labels.push(timestamp);
+                chartData.datasets[0].data.push(pm25ValueSensor1);
+                chartData.datasets[1].data.push(pm25ValueSensor2);
+
+                if (chartData.labels.length > 50) {
+                    chartData.labels.shift();
+                    chartData.datasets[0].data.shift();
+                    chartData.datasets[1].data.shift();
+                }
+
+                chart.update();
+            } catch (error) {
+                console.error('Error fetching sensor data:', error);
+            }
+        }
+
+        setInterval(fetchSensorData, 5000);
+        fetchSensorData();
+    </script>
+</body>
+</html>

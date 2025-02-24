@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOC Sensor Data</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: black;
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh; /* Ensure the body takes up the full viewport height */
+        }
+        h1 {
+            margin-bottom: 5px; /* Reduces space between title and sensor data */
+            font-size: clamp(20px, 5vw, 40px); /* Scales between 20px and 40px based on viewport width */
+        }
+        .data-container {
+            text-align: center; /* Centers the text inside the container */
+            margin-top: 5px; /* Reduces space below the title */
+        }
+        .data-item {
+            font-size: clamp(14px, 3vw, 24px); /* Scales between 14px and 24px based on viewport width */
+            margin: 5px 10px 5px 0; /* Adds right margin to create space between items */
+            display: inline-block; /* Ensures the text is centered properly */
+        }
+        .chart-container {
+            flex: 1; /* Allows the chart container to take up remaining vertical space */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        canvas {
+            background-color: black;
+            width: 100% !important; /* Ensures the canvas takes up full width */
+            height: 100% !important; /* Ensures the canvas takes up full height */
+        }
+    </style>
+</head>
+<body>
+    <h1>VOC Sensor Data</h1>
+    <div class="data-container" id="sensor-data">
+        <div class="data-item">Supply VOC: <span id="voc-sensor1">Loading...</span> ppb</div>
+        <div class="data-item">Room VOC: <span id="voc-sensor2">Loading...</span> ppb</div>
+    </div>
+    <div class="chart-container">
+        <canvas id="vocChart"></canvas>
+    </div>
+
+    <script>
+        const apiUrlSensor1 = 'https://ezdata2.m5stack.com/api/v2/48ca433a1dc0/dataMacByKey/raw';
+        const apiUrlSensor2 = 'https://ezdata2.m5stack.com/api/v2/48CA433A3AA0/dataMacByKey/raw';
+
+        const ctx = document.getElementById("vocChart").getContext("2d");
+
+        const chartData = {
+            labels: [],
+            datasets: [
+                {
+                    label: "Supply VOC (ppb)",
+                    borderColor: "green",
+                    data: [],
+                    fill: false,
+                    tension: .1
+                },
+                {
+                    label: "Room VOC (ppb)",
+                    borderColor: "yellow",
+                    data: [],
+                    fill: false,
+                    tension: .1
+                }
+            ]
+        };
+
+        const chart = new Chart(ctx, {
+            type: "line",
+            data: chartData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false, /* Allows the chart to stretch vertically */
+                scales: {
+                    x: {
+                        type: 'category',
+                        title: { display: true, text: 'Time', color: 'white' },
+                        ticks: { color: 'gray' },
+                        grid: { color: 'gray' }
+                    },
+                    y: {
+                        title: { display: true, text: 'VOC (ppb)', color: 'white' },
+                        ticks: { color: 'gray' },
+                        grid: { color: 'gray' },
+                        min: 0,
+                        max: 500
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: 'white'
+                        }
+                    }
+                }
+            }
+        });
+
+        async function fetchSensorData() {
+            try {
+                const fetchData = async (url) => {
+                    const response = await fetch(url);
+                    const data = await response.json();
+                    if (!data.data || !data.data.value) throw new Error("Invalid data structure");
+                    const vocMatch = data.data.value.match(/voc\\\":(\d+)/);
+                    if (!vocMatch) throw new Error("VOC data missing");
+                    return parseInt(vocMatch[1], 10);
+                };
+
+                const [vocValueSensor1, vocValueSensor2] = await Promise.all([
+                    fetchData(apiUrlSensor1),
+                    fetchData(apiUrlSensor2)
+                ]);
+
+                document.getElementById('voc-sensor1').textContent = vocValueSensor1.toFixed(3);
+                document.getElementById('voc-sensor2').textContent = vocValueSensor2.toFixed(3);
+
+                const timestamp = new Date().toLocaleTimeString();
+                chartData.labels.push(timestamp);
+                chartData.datasets[0].data.push(vocValueSensor1);
+                chartData.datasets[1].data.push(vocValueSensor2);
+
+                if (chartData.labels.length > 50) {
+                    chartData.labels.shift();
+                    chartData.datasets[0].data.shift();
+                    chartData.datasets[1].data.shift();
+                }
+
+                chart.update();
+            } catch (error) {
+                console.error('Error fetching sensor data:', error);
+            }
+        }
+
+        setInterval(fetchSensorData, 5000);
+        fetchSensorData();
+    </script>
+</body>
+</html>

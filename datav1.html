@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Sensor Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .data-container {
+            display: inline-block;
+            text-align: left;
+            margin-top: 20px;
+        }
+        .data-item {
+            font-size: 18px;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Live Sensor Data</h1>
+    <div class="data-container" id="sensor-data">
+        <div class="data-item">PM1.0: <span id="pm1_0">Loading...</span></div>
+        <div class="data-item">PM2.5: <span id="pm2_5">Loading...</span></div>
+        <div class="data-item">PM4.0: <span id="pm4_0">Loading...</span></div>
+        <div class="data-item">PM10.0: <span id="pm10_0">Loading...</span></div>
+        <div class="data-item">Humidity: <span id="humidity">Loading...</span>%</div>
+        <div class="data-item">Temperature: <span id="temperature">Loading...</span>°C</div>
+        <div class="data-item">VOC: <span id="voc">Loading...</span></div>
+        <div class="data-item">NOx: <span id="nox">Loading...</span></div>
+        <div class="data-item">CO2: <span id="co2">Loading...</span> ppm</div>
+    </div>
+
+    <script>
+        const apiUrl = 'https://ezdata2.m5stack.com/api/v2/48ca433a1dc0/dataMacByKey/raw';
+
+        async function fetchSensorData() {
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+                const parsedValue = JSON.parse(data.data.value.replace(/\\"/g, '"'));
+                
+                document.getElementById('pm1_0').textContent = parsedValue.sen55["pm1.0"].toFixed(3);
+                document.getElementById('pm2_5').textContent = parsedValue.sen55["pm2.5"].toFixed(3);
+                document.getElementById('pm4_0').textContent = parsedValue.sen55["pm4.0"].toFixed(3);
+                document.getElementById('pm10_0').textContent = parsedValue.sen55["pm10.0"].toFixed(3);
+                document.getElementById('humidity').textContent = parsedValue.sen55.humidity.toFixed(3);
+                document.getElementById('temperature').textContent = parsedValue.sen55.temperature.toFixed(3);
+                document.getElementById('voc').textContent = parsedValue.sen55.voc.toFixed(3);
+                document.getElementById('nox').textContent = parsedValue.sen55.nox.toFixed(3);
+                document.getElementById('co2').textContent = parsedValue.scd40.co2.toFixed(3);
+            } catch (error) {
+                console.error('Error fetching sensor data:', error);
+            }
+        }
+        
+        setInterval(fetchSensorData, 5000); // Update every 5 seconds
+        fetchSensorData(); // Initial fetch
+    </script>
+</body>
+</html>
