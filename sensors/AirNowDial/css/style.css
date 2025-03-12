@@ -1,0 +1,334 @@
+body {
+    background-color: #2E75B6;
+    margin: 0;
+    width: 230px;
+    height: 340px;
+    overflow: hidden;
+}
+
+body.transparent {
+  background-color: transparent !important;
+}
+
+.hidden {
+    visibility: hidden !important;
+    opacity: 0 !important;
+}
+
+.aq-dial-widget {
+    font-family: "AQDialWidget-DroidSansFont";
+    width: 220px;
+    height: 220px;
+    padding: 5px;
+    color: white;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+}
+
+.aq-dial-widget .aq-dial-background,
+.aq-dial-widget .aq-dial-background2 {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.aq-dial-widget .aq-dial-background,
+.aq-dial-widget .aq-dial-background2 {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+
+    opacity: 0.7;
+
+    position: absolute;
+    height: inherit;
+    width: inherit;
+}
+
+.aq-dial-widget .aq-dial-background2 {
+    opacity: 0.5;
+}
+
+.aq-dial-widget.background-opaque .aq-dial-background,
+.aq-dial-widget.background-opaque .aq-dial-background2 {
+    opacity: 1;
+}
+
+.aq-dial-widget .aq-dial-container {
+    position: relative;
+    width: inherit;
+    height: inherit;
+
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s, opacity 0.15s linear;
+}
+
+.aq-dial-widget .logo {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.aq-dial-widget .aq-dial-meter {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+
+    position: absolute;
+    height: inherit;
+    width: inherit;
+}
+
+.aq-dial-widget .trim {
+    width: 100%;
+    height: calc(50% + 1px);
+    overflow: hidden;
+
+    position: absolute;
+}
+
+.aq-dial-widget .aq-dial-arrow {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+
+    -webkit-transition: all 1.25s ease-in-out;
+    -moz-transition: all 1.25s ease-in-out;
+    -o-transition: all 1.25s ease-in-out;
+    transition: all 1.25s ease-in-out;
+    -webkit-transform-origin: center;
+    -moz-transform-origin: center;
+    -o-transform-origin: center;
+    transform-origin: center;
+
+    position: absolute;
+    width: 220px;
+    height: 220px;
+}
+
+.aq-dial-widget .aq-dial-status {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+
+    position: absolute;
+    height: 220px;
+    width: 220px;
+
+    background-image: url("../images/dial_not_available.svg");
+    background-size: cover;
+}
+
+.aq-dial-widget.not_avaialble .aq-dial-status {
+    background-image: url("../images/dial_not_available.svg");
+}
+.aq-dial-widget.good .aq-dial-status {
+    background-image: url("../images/dial_good.svg");
+}
+.aq-dial-widget.moderate .aq-dial-status {
+    background-image: url("../images/dial_moderate.svg");
+}
+.aq-dial-widget.usg .aq-dial-status {
+    background-image: url("../images/dial_usg.svg");
+}
+.aq-dial-widget.unhealthy .aq-dial-status {
+    background-image: url("../images/dial_unhealthy.svg");
+}
+.aq-dial-widget.very_unhealthy .aq-dial-status {
+    background-image: url("../images/dial_very_unhealthy.svg");
+}
+.aq-dial-widget.hazardous .aq-dial-status {
+    background-image: url("../images/dial_hazardous.svg");
+}
+.aq-dial-widget.beyond_index .aq-dial-status{
+    background-image: url("../images/dial_beyond_index.svg");
+}
+
+.aq-dial-widget .aq-dial-data {
+    position: absolute;
+    color: white;
+    width: inherit;
+    height: inherit;
+}
+
+.aq-dial-widget .aq-dial-data .aq-aqi-container {
+    position: relative;
+    width: inherit;
+    margin-top: 45px;
+    height: 65px;
+    text-align: center;
+    font-family: inherit;
+    min-height: 1px;
+    font-size: 14px;
+    color: white;
+    line-height: 22px;
+
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+
+    justify-content: center;
+}
+
+.aq-dial-widget.good .aq-dial-data .aq-aqi-container {
+    color: black;
+}
+
+.aq-dial-widget.moderate .aq-dial-data .aq-aqi-container {
+    color: black;
+}
+
+.aq-dial-widget .aq-dial-data .aq-aqi-container .aq-aqi-value {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.aq-dial-widget .aq-dial-data .aq-title-container {
+    position: relative;
+    width: inherit;
+    height: 45px;
+    text-align: center;
+    font-family: inherit;
+    min-height: 1px;
+    font-size: 24px;
+    color: inherit;
+
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+}
+.aq-dial-widget.usg .aq-dial-data .aq-title-container {
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.aq-dial-widget .aq-dial-data .aq-title-container .aq-title {
+    width: 100%;
+    padding: 0 25px;
+}
+
+.aq-dial-widget .aq-dial-data .aq-info-panel {
+    position: relative;
+    width: inherit;
+    height: 20px;
+    min-height: 1px;
+    text-align: center;
+    line-height: 0px;
+    font-size: 12px;
+    padding-top: 5px;
+}
+
+.aq-dial-widget .aq-dial-data .aq-info-panel .aq-pollutant-container {
+    position: relative;
+    display: inline-block;
+    border-left: 1px solid rgba(255, 255, 255, 0.25);
+
+    padding-left: 10px;
+}
+
+.aq-dial-widget .aq-dial-data .aq-info-panel .aq-pollutant-container .aq-pollutant-label {
+    font-size: 18px;
+}
+
+.aq-dial-widget .logo-panel {
+    width: 100%;
+    height: 21px;
+    position: relative;
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 21px;
+    line-height: 30px;
+}
+
+.aq-dial-widget .logo-panel a {
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+.aq-dial-widget .logo-panel a:hover {
+    text-decoration: underline;
+}
+
+.aq-dial-widget .logo-panel .aq-dial-airnow-logo {
+    font-size: 14px;
+}
+
+.aq-dial-widget .logo-panel .aq-dial-epa-logo {
+    height: 12px;
+}
+
+.city-container {
+    width: 100%;
+    float: left;
+    position: relative;
+    text-align: center;
+    font-size: 24px;
+    margin-top: 10px;
+    color: white;
+    font-family: "AQDialWidget-DroidSansFont";
+    padding: 5px 10px;
+    box-sizing: border-box;
+}
+
+.city-container .city {
+    display: inline-block;
+    padding: 5px 15px;
+}
+body.transparent .city-container .city {
+  background-color: rgba(0,0,0,0.65);
+  border-radius: 15px;
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html><html lang="en"><head>
+    <title>Dial Widget from AirNow.gov</title>
+	<meta charset="utf-8">
+    <meta name="dcterms.title" content="Dial Widget from AirNow.gov">
+	  <!--
+    <base href="https://widget.airnow.gov/aq-dial-widget/" target="_blank">
+  -->
+    <script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="js/moment-with-locales.min.js"></script>
+    <script type="text/javascript" src="js/pubsub.js"></script>
+    <script type="text/javascript" src="js/base.js"></script>
+    <script type="text/javascript" src="js/storage.js"></script>
+    <script type="text/javascript" src="js/geolocation.js"></script>
+    <script type="text/javascript" src="js/reportingarea.js"></script>
+
+    <style type="text/css">
+        @font-face {
+            font-family: AQDialWidget-DroidSansFont;
+            src: url('fonts/DroidSans-webfont.ttf'),
+                 url('fonts/DroidSans-webfont.eot');
+            font-weight: normal;
+            font-style: normal;
+        }
+    </style>
+    <link rel="stylesheet" href="css/style.css">
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0];var j=d.createElement(s);var dl=l!='dataLayer'?'&l='+l:'';j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl+'';j.async=true;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-L8ZB');</script>
+
+  </head>
+  <body class="transparent">
+  <div class="aq-dial-widget transparent" role="main" data-city="Raleigh" data-state="NC" data-country="USA">
+    <img class="aq-dial-background" src="images/dial_black_circle_top_bigger.svg" alt="background top half">
+    <img class="aq-dial-background2" src="images/dial_black_circle_bottom_smaller.svg" alt="background bottom half">
+    <div class="aq-dial-container hidden">
+        <img class="aq-dial-meter" src="images/dial_legend.svg" alt="dial legend">
+        <div class="trim">
+            <img class="aq-dial-arrow" src="images/dial_arrow_full_rounded.svg" alt="dial arrow">
+        </div>
+        <div class="aq-dial-status"></div>
+        <div class="aq-dial-data">
+            <div class="aq-aqi-container">
+                <span>
+                    <div class="aq-aqi-value"><!---23---></div>
+                    <div>AQI</div>
+                </span>
+            </div>
+            <div class="aq-title-container">
+                <span class="aq-title">><!---Good---></span>
+            </div>
+            <div class="aq-info-panel">
+                <span class="aq-updated-time"><!---1:00 PM PDT---></span>
+            </div>
+            <div class="logo-panel">
+                <a href="https://www.airnow.gov/" class="aq-dial-airnow-logo" target="_blank">AirNow</a>��
+                <a href="https://www.epa.gov/" target="_blank"><img class="aq-dial-epa-logo" src="images/epa-logo.svg" alt="small EPA logo"></a>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="city-container">
+    <span class="city hidden"></span>
+  </div>
+  <script type="text/javascript" src="js/main.js"></script>
+  
+
+</body></html>

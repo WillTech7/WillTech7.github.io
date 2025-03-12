@@ -1,0 +1,81 @@
+<html lang="en"><head>
+    <title>Dial Widget from AirNow.gov</title>
+	<meta charset="utf-8">
+    <meta name="dcterms.title" content="Dial Widget from AirNow.gov">
+	  <!--
+    <base href="https://widget.airnow.gov/aq-dial-widget/" target="_blank">
+  -->
+    <script src="https://www.googletagmanager.com/gtm.js?id=GTM-L8ZB" async=""></script><script type="text/javascript" src="./js/lib/jquery/3.5.1/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="./js/lib/momentjs/2.27.0/moment-with-locales.min.js"></script>
+    <script type="text/javascript" src="./js/lib/pubsub/1.5.8/pubsub.js"></script>
+    <script type="text/javascript" src="./js/airnow/base.js"></script>
+    <script type="text/javascript" src="./js/airnow/storage.js"></script>
+    <script type="text/javascript" src="./js/airnow/geolocation.js"></script>
+    <script type="text/javascript" src="./js/airnow/reportingarea.js"></script>
+    <script>
+        function updateLiveTime() {
+            const now = new Date();
+            let hours = now.getHours();
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12 || 12; // Convert to 12-hour format
+            const timeString = `<b>${hours}:${minutes} ${ampm}</b>`;
+    
+            // Format the date as "EDT Mar 11" dynamically
+            const options = { timeZoneName: 'short', month: 'short', day: 'numeric' };
+            const dateString = now.toLocaleDateString('en-US', options).replace(',', '');
+    
+            document.querySelector('.aq-updated-time').innerHTML = `${timeString} ${dateString}`;
+        }
+    
+        // Update every minute
+        setInterval(updateLiveTime, 60000);
+        window.onload = updateLiveTime; // Ensure time updates on page load
+    </script>
+
+    <style type="text/css">
+        @font-face {
+            font-family: AQDialWidget-DroidSansFont;
+            src: url('./css/DroidSans-webfont.ttf'),
+                 url('./css/DroidSans-webfont.eot');
+            font-weight: normal;
+            font-style: normal;
+        }
+    </style>
+    <link rel="stylesheet" href="./css/style.css">
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0];var j=d.createElement(s);var dl=l!='dataLayer'?'&amp;l='+l:'';j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl+'';j.async=true;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-L8ZB');</script>
+
+  <style>.extraClassAspect { -webkit-transform:scaleX(1)!important; }	.extraClassCrop { -webkit-transform:scale(1)!important; }</style></head>
+  <body class="">
+  <div class="aq-dial-widget transparent good" role="main" data-city="Raleigh" data-state="NC" data-country="USA">
+    <img class="aq-dial-background" src="./images/dial_black_circle_top_bigger.svg" alt="background top half">
+    <img class="aq-dial-background2" src="./images/dial_black_circle_bottom_smaller.svg" alt="background bottom half">
+    <div class="aq-dial-container">
+        <img class="aq-dial-meter" src="./images/dial_legend.svg" alt="dial legend">
+        <div class="trim">
+            <img class="aq-dial-arrow" src="./images/dial_arrow_full_rounded.svg" alt="dial arrow" style="transform: rotate(25.2deg);">
+        </div>
+        <div class="aq-dial-status"></div>
+        <div class="aq-dial-data">
+            <div class="aq-aqi-container">
+                <span>
+                    <div class="aq-aqi-value">32</div>
+                    <div>IAQI</div>
+                </span>
+            </div>
+            <div class="aq-title-container">
+                <span class="aq-title">Good</span>
+            </div>
+            <div class="aq-info-panel">
+                <span class="aq-updated-time"><b></b></span>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="city-container">
+    <span class="city">PKI 155</span>
+  </div>
+  <script type="text/javascript" src="./js/main.js"></script>
+
+</body></html>
+</html>

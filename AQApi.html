@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Iframe Example</title>
+</head>
+<body>
+    <div id="iframe-container"></div>
+
+    <script>
+        // Create an iframe element
+        var iframe = document.createElement('iframe');
+        
+        // Set the iframe's attributes
+        iframe.title = "Example 1";
+        iframe.height = "340";
+        iframe.width = "230";
+        iframe.src = "https://widget.airnow.gov/aq-dial-widget/?city=Raleigh&state=NC&country=USA";
+        iframe.style.border = "none";
+        iframe.style.borderRadius = "25px";
+        
+        // Append the iframe to a container div
+        document.getElementById('iframe-container').appendChild(iframe);
+    </script>
+</body>
+</html>
