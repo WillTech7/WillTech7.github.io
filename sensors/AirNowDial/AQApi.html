@@ -6,12 +6,123 @@
     <base href="https://widget.airnow.gov/aq-dial-widget/" target="_blank">
   -->
     <script src="https://www.googletagmanager.com/gtm.js?id=GTM-L8ZB" async=""></script><script type="text/javascript" src="./js/lib/jquery/3.5.1/jquery-3.5.1.min.js"></script>
-    <script type="text/javascript" src="./js/lib/momentjs/2.27.0/moment-with-locales.min.js"></script>
-    <script type="text/javascript" src="./js/lib/pubsub/1.5.8/pubsub.js"></script>
-    <script type="text/javascript" src="./js/airnow/base.js"></script>
-    <script type="text/javascript" src="./js/airnow/storage.js"></script>
-    <script type="text/javascript" src="./js/airnow/geolocation.js"></script>
-    <script type="text/javascript" src="./js/airnow/reportingarea.js"></script>
+
+    <script>
+        async function fetchRoomPM25() {
+            const url = 'https://ezdata2.m5stack.com/api/v2/48CA433A3AA0/dataMacByKey/raw';
+    
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+                
+                const data = await response.json();
+                if (!data || !data.data || typeof data.data.value !== 'string') throw new Error("Invalid data structure");
+    
+                // Extract PM2.5 value
+                const pm25Match = data.data.value.match(/pm2\.5\\":(\d+\.?\d*)/);
+                if (!pm25Match) throw new Error("PM2.5 data missing");
+    
+                const pm25Value = parseFloat(pm25Match[1]);
+                const aqiValue = convertPM25toAQI(pm25Value);
+    
+                // Update AQI value in the HTML
+                document.querySelector('.aq-aqi-value').textContent = aqiValue;
+            } catch (error) {
+                console.error('Error fetching PM2.5 data:', error);
+            }
+        }
+    
+        function convertPM25toAQI(pm25) {
+            // EPA PM2.5 AQI Breakpoints
+            const breakpoints = [
+                { pmLow: 0.0, pmHigh: 12.0, aqiLow: 0, aqiHigh: 50 },
+                { pmLow: 12.1, pmHigh: 35.4, aqiLow: 51, aqiHigh: 100 },
+                { pmLow: 35.5, pmHigh: 55.4, aqiLow: 101, aqiHigh: 150 },
+                { pmLow: 55.5, pmHigh: 150.4, aqiLow: 151, aqiHigh: 200 },
+                { pmLow: 150.5, pmHigh: 250.4, aqiLow: 201, aqiHigh: 300 },
+                { pmLow: 250.5, pmHigh: 500.4, aqiLow: 301, aqiHigh: 500 }
+            ];
+    
+            for (const range of breakpoints) {
+                if (pm25 >= range.pmLow && pm25 <= range.pmHigh) {
+                    return Math.round(
+                        ((range.aqiHigh - range.aqiLow) / (range.pmHigh - range.pmLow)) * (pm25 - range.pmLow) + range.aqiLow
+                    );
+                }
+            }
+    
+            return 500; // Max AQI for PM2.5
+        }
+    
+        // Fetch and update AQI every minute
+        setInterval(fetchRoomPM25, 60000);
+        fetchRoomPM25();
+    </script>
+    <script>
+        const apiUrlSensor2 = 'https://ezdata2.m5stack.com/api/v2/48CA433A3AA0/dataMacByKey/raw';
+    
+        // Breakpoints for PM2.5 to AQI conversion
+        const breakpoints = [
+            { pmLow: 0.0, pmHigh: 12.0, aqiLow: 0, aqiHigh: 50, label: "Good" },
+            { pmLow: 12.1, pmHigh: 35.4, aqiLow: 51, aqiHigh: 100, label: "Moderate" },
+            { pmLow: 35.5, pmHigh: 55.4, aqiLow: 101, aqiHigh: 150, label: "Unhealthy for Sensitive" },
+            { pmLow: 55.5, pmHigh: 150.4, aqiLow: 151, aqiHigh: 200, label: "Unhealthy" },
+            { pmLow: 150.5, pmHigh: 250.4, aqiLow: 201, aqiHigh: 300, label: "Very Unhealthy" },
+            { pmLow: 250.5, pmHigh: 500.4, aqiLow: 301, aqiHigh: 500, label: "Hazardous" }
+        ];
+    
+        function calculateAQI(pm25) {
+            for (let bp of breakpoints) {
+                if (pm25 >= bp.pmLow && pm25 <= bp.pmHigh) {
+                    return {
+                        aqi: Math.round(((bp.aqiHigh - bp.aqiLow) / (bp.pmHigh - bp.pmLow)) * (pm25 - bp.pmLow) + bp.aqiLow),
+                        label: bp.label
+                    };
+                }
+            }
+            return { aqi: 500, label: "Hazardous" }; // Default to worst case
+        }
+    
+        async function updateAQI() {
+            try {
+                const response = await fetch(apiUrlSensor2);
+                if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+                const data = await response.json();
+    
+                const pm25Match = data.data.value.match(/pm2\.5\\":(\d+\.?\d*)/);
+                if (!pm25Match) throw new Error("PM2.5 data missing");
+    
+                const pm25Value = parseFloat(pm25Match[1]);
+                const { aqi, label } = calculateAQI(pm25Value);
+    
+                // Update AQI value
+                document.querySelector('.aq-aqi-value').textContent = aqi;
+    
+                // Update AQI label
+                document.querySelector('.aq-title').textContent = label;
+    
+                // Update dial arrow rotation
+                let rotation;
+                if (aqi <= 150) {
+                    // Scale AQI 0-150 to 0°-90°
+                    rotation = (aqi / 150) * 90;
+                } else {
+                    // Scale AQI 150-500 to 90°-180°
+                    rotation = 90 + ((aqi - 150) / 350) * 90;
+                }
+
+                document.querySelector('.aq-dial-arrow').style.transform = `rotate(${rotation}deg)`;
+
+                } catch (error) {
+                    console.error('Error fetching sensor data:', error);
+                }
+            }
+        
+        // Update AQI every 5 seconds
+        setInterval(updateAQI, 5000);
+        updateAQI();
+    </script>
+    
     <script>
         function updateLiveTime() {
             const now = new Date();
@@ -53,18 +164,18 @@
     <div class="aq-dial-container">
         <img class="aq-dial-meter" src="./images/dial_legend.svg" alt="dial legend">
         <div class="trim">
-            <img class="aq-dial-arrow" src="./images/dial_arrow_full_rounded.svg" alt="dial arrow" style="transform: rotate(25.2deg);">
+            <img class="aq-dial-arrow" src="./images/dial_arrow_full_rounded.svg" alt="dial arrow" style="transform: rotate();">
         </div>
         <div class="aq-dial-status"></div>
         <div class="aq-dial-data">
             <div class="aq-aqi-container">
                 <span>
-                    <div class="aq-aqi-value">32</div>
-                    <div>IAQI</div>
+                    <div class="aq-aqi-value"></div>
+                    <div>Indoor AQI</div>
                 </span>
             </div>
             <div class="aq-title-container">
-                <span class="aq-title">Good</span>
+                <span class="aq-title"></span>
             </div>
             <div class="aq-info-panel">
                 <span class="aq-updated-time"><b></b></span>
