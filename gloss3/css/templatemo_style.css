@@ -29,7 +29,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Apply Valorant font to the specific class */
 .templatemo_webtitle {
-    font-family: 'VALORANT', 'Open Sans', Arial, Helvetica Neue, sans-serif;
+    font-family: 'VALORANT'/*, 'Open Sans', Arial, Helvetica Neue, sans-serif*/;
     color: #111823;
     letter-spacing: -2px;
     line-height: 46px;
