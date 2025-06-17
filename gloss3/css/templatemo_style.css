@@ -31,7 +31,7 @@ h1, h2, h3, h4, h5, h6 {
 .templatemo_webtitle {
     font-family: 'VALORANT'/*, 'Open Sans', Arial, Helvetica Neue, sans-serif*/;
     color: #111823;
-    letter-spacing: -2px;
+    letter-spacing: 1px;
     line-height: 46px;
     text-shadow: 1px 1px 1px #ffffff;
     margin: 25px 0px 0px 30px;
@@ -159,8 +159,8 @@ h1 {
 
 .templatemo_webtitle span {
     line-height: 30px;
-    color: #e0eaf0;
-    letter-spacing: -1px;
+    color: #111823;
+    letter-spacing: 1px;
     margin-left: 5px;
 }
 
