@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Ultras - Clothing Store eCommerce Store HTML Website Template</title>
+  <title>Will Randby - Engineering the Future</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,6 +25,20 @@
     ================================================== -->
   <script src="js/modernizr.js"></script>
   <link rel="stylesheet" href="css/style.css">
+<script>
+  // Hide gear image when viewport width <= 768px
+  function checkWidth() {
+    const gear = document.getElementById('gear-container');
+    if (window.innerWidth <= 768) {
+      gear.style.display = 'none';
+    } else {
+      gear.style.display = 'block';
+    }
+  }
+  window.addEventListener('resize', checkWidth);
+  window.addEventListener('load', checkWidth);
+</script>
+
 </head>
 
 <body>
@@ -101,9 +115,10 @@
                   <li><a href="about.html" class="item-anchor active" data-effect="About">About</a></li>
                   <li><a href="blog.html" class="item-anchor" data-effect="Blog">Creations</a></li>
                   <li class="menu-item has-sub">
-                    <a href="shop.html" class="item-anchor d-flex align-item-center" data-effect="Products">Archive</a></li>
+                    <a href="shop.html" class="item-anchor d-flex align-item-center" data-effect="Products">Archive</a>
+                  </li>
 
-                    <!--
+                  <!--
                   <li class="menu-item has-sub">
                     <a href="#" class="item-anchor d-flex align-item-center" data-effect="Pages">Pages<i
                         class="icon icon-chevron-down"></i></a>
@@ -138,10 +153,10 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-        <h1 class="page-title">
-          <span style="color: rgb(209, 177, 255);">I'm</span>  
-          <span style="color: white;">Will</span>
-        </h1>
+          <h1 class="page-title">
+            <span style="color: rgb(209, 177, 255);">I'm</span>
+            <span style="color: white;">Will</span>
+          </h1>
           <div class="breadcrumbs">
             <span class="item">
               <a href="index.html" style="color: rgb(209, 177, 255);">Home /</a>
@@ -154,6 +169,43 @@
   </section>
   <br>
   <br>
+
+
+<section id="about-us">
+  <div class="container ">
+    <div class="row d-flex align-items-center">
+      <div class="col-lg-6 col-md-12">
+        <div class="image-holder">
+          <img src="newimages/peace.png" alt="single" class="about-image" style="max-width: 400px; width: 100%; height: auto;">
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-12">
+        <div class="detail">
+          <div class="display-header">
+            <h2>_____________________</h2>
+            <h2 class="section-title">About me</h2>
+            <p>I'm a rising star in the technology and engineering field. I'm skilled in working with
+              modern technology. I can fix almost any computer problem.
+              <br>
+              Connect with my YouTube channel, Instagram, or LinkedIn for more info and updates on my latest projects
+            </p>
+            <a href="https://www.youtube.com/channel/UCKRwq942LARxulnvo34tHww" target="_blank">
+              <img src="newimages/youtube-icon.png" alt="YouTube" class="social-icon">
+            </a>
+            <a href="https://www.instagram.com/willrandby/" target="_blank">
+              <img src="newimages/Instagram-icon.png" alt="Instagram" class="social-icon">
+            </a>
+            <a href="https://www.linkedin.com/in/willrandby/" target="_blank">
+              <img src="newimages/linkedin-icon.png" alt="LinkedIn" class="social-icon">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--
   <section id="about-us">
     <div class="container ">
       <div class="row d-flex align-items-center">
@@ -169,25 +221,25 @@
                 __________________________________
               </h2>
               <h2 class="section-title">About me</h2>
-              <p>I'm a rising star in the technology and engineering field. I'm skilled in working with 
+              <p>I'm a rising star in the technology and engineering field. I'm skilled in working with
                 modern technology. I can fix almost any computer problem.
                 <br>
                 Connect with my YouTube channel, Instagram, or LinkedIn for more info and updates on my latest projects
               </p>
-                <a href="https://www.youtube.com/channel/UCKRwq942LARxulnvo34tHww" target="_blank">
-                  <img src="newimages/youtube-icon.png" alt="YouTube" class="social-icon">
-                </a>
-                <a href="https://www.instagram.com/willrandby/" target="_blank">
-                  <img src="newimages/Instagram-icon.png" alt="Instagram" class="social-icon">
-                </a>
-                <a href="https://www.linkedin.com/in/willrandby/" target="_blank">
-                  <img src="newimages/linkedin-icon.png" alt="LinkedIn" class="social-icon">
-                </a>
-              </div>
+              <a href="https://www.youtube.com/channel/UCKRwq942LARxulnvo34tHww" target="_blank">
+                <img src="newimages/youtube-icon.png" alt="YouTube" class="social-icon">
+              </a>
+              <a href="https://www.instagram.com/willrandby/" target="_blank">
+                <img src="newimages/Instagram-icon.png" alt="Instagram" class="social-icon">
+              </a>
+              <a href="https://www.linkedin.com/in/willrandby/" target="_blank">
+                <img src="newimages/linkedin-icon.png" alt="LinkedIn" class="social-icon">
+              </a>
             </div>
           </div>
         </div>
       </div>
+    </div>
     </div>
   </section>
 
@@ -195,49 +247,67 @@
     <div class="container">
       <div class="reviews-content">
         <div class="row d-flex flex-wrap">
-          <div class="col-md-2">
+          <div class="col-md-2 review-icon-container" id="gearBox">
             <div class="review-icon">
-              <i class="icon icon-right-quote"></i>
+              <img src="newimages/gear.png" class="fixed-gear">
             </div>
           </div>
           <div class="col-md-8">
-            <div class="swiper testimonial-swiper overflow-hidden">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                  <div class="testimonial-detail">
-                    <p>“Dignissim massa diam elementum habitant fames. Id nullam pellentesque nisi, eget cursus dictumst
-                      pharetra, sit. Pulvinar laoreet id porttitor egestas dui urna. Porttitor nibh magna dolor ultrices
-                      iaculis sit iaculis.”</p>
-                    <div class="author-detail">
-                      <div class="name">By Maggie Rio</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="testimonial-detail">
-                    <p>“Dignissim massa diam elementum habitant fames. Id nullam pellentesque nisi, eget cursus dictumst
-                      pharetra, sit. Pulvinar laoreet id porttitor egestas dui urna. Porttitor nibh magna dolor ultrices
-                      iaculis sit iaculis.”</p>
-                    <div class="author-detail">
-                      <div class="name">By John Smith</div>
-                    </div>
-                  </div>
-                </div>
+            <div class="testimonial-detail">
+              <p>“Dignissim massa diam elementum habitant fames. Id nullam pellentesque nisi, eget cursus dictumst
+                pharetra, sit. Pulvinar laoreet id porttitor egestas dui urna. Porttitor nibh magna dolor ultrices
+                iaculis sit iaculis.”</p>
+              <div class="author-detail">
+                <div class="name">By Maggie Rio</div>
               </div>
-            </div>
-            <div class="swiper-arrows">
-              <button class="prev-button">
-                <i class="icon icon-arrow-left"></i>
-              </button>
-              <button class="next-button">
-                <i class="icon icon-arrow-right"></i>
-              </button>
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
+-->
+
+
+<div style="
+  display: flex; 
+  justify-content: center; 
+  padding: 40px 20px;
+">
+  <div style="
+    display: flex; 
+    align-items: center; 
+    gap: 65px; 
+    max-width: 900px; 
+    width: 100%;
+  ">
+    <div id="gear-container" style="
+      flex: 0 0 auto;
+    ">
+      <img src="newimages/gear.png" alt="Gear Icon" style="
+        width: 100px; 
+        height: auto; 
+        display: block;
+      ">
+    </div>
+    <div style="
+      display: flex; 
+      flex-direction: column; 
+      justify-content: center; 
+      flex: 1;
+    ">
+      <div style="font-size: 1.2rem; margin-bottom: 0px; color: rgb(209, 177, 255);">Bachelors of Science in Architectural Engineering</div>
+      <div style="font-size: 0.9rem; margin-bottom: 14px; color: inherit; opacity: 0.7;">2024 - University of Nebraska</div>
+      <div style="font-size: 1.2rem; margin-bottom: 0px; color: rgb(209, 177, 255);">Masters of Science in Architectural Engineering</div>
+      <div style="font-size: 0.9rem; margin-bottom: 14px; color: inherit; opacity: 0.7;">2025 - University of Nebraska</div>
+      <div style="font-size: 1.2rem; margin-bottom: 0px; color: rgb(209, 177, 255);">Engineer in Training &quot;EIT&quot;</div>
+      <div style="font-size: 0.9rem; margin-bottom: 14px; color: inherit; opacity: 0.7;">Passed the Fundamentals of Engineering Exam</div>
+      <div style="font-size: 1.2rem; margin-bottom: 0px; color: rgb(209, 177, 255);">Part 107 Certified Drone Pilot</div>
+      <div style="font-size: 0.9rem; margin-bottom: 14px; color: inherit; opacity: 0.7;">FAA Certified Commercial Drone Pilot</div>
+    </div>
+  </div>
+</div>
+
 
   <hr>
   <section id="latest-blog" class="padding-large">
@@ -245,8 +315,7 @@
       <div class="section-header d-flex flex-wrap align-items-center justify-content-between">
         <h2 class="section-title">My creations</h2>
         <div class="btn-wrap align-right">
-          <a href="blog.html" class="d-flex align-items-center">Check them out! <i
-              class="icon icon icon-arrow-io"></i>
+          <a href="blog.html" class="d-flex align-items-center">Check them out! <i class="icon icon icon-arrow-io"></i>
           </a>
         </div>
       </div>
@@ -359,9 +428,9 @@
     </div>
   </section>
 
-  
 
-  
+
+
 
   <script src="js/jquery-1.11.0.min.js"></script>
   <script src="js/plugins.js"></script>

@@ -107,6 +107,20 @@ CSS STRUCTURE:
 My Style CSS stuff:
 */
 
+.fixed-gear {
+  width: 180px;           /* or your desired fixed size */
+  height: 180px;
+  object-fit: contain;
+  flex-shrink: 0;        /* Prevent shrinking in flex layouts */
+}
+
+/* Hide gear image when screen width is small enough */
+@media (max-width: 767.98px) {
+  .review-icon-container {
+    display: none;
+  }
+}
+
 
 .image-border-wrapper {
   border: 4px solid rgb(209, 177, 255);
