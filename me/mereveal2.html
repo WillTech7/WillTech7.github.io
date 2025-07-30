@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Cropped GIF</title>
+  <style>
+    body {
+      margin: 0;
+      background: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .gif-crop-container {
+      width: 100%;
+      height: 50%; /* Show middle 50% of GIF */
+      overflow: hidden;
+      position: relative;
+    }
+
+    .gif-crop-container img {
+      width: 100%;
+      position: absolute;
+      top: -25%; /* Move the image up to hide top 25% */
+    }
+  </style>
+</head>
+<body>
+  <div class="gif-crop-container">
+    <img src="newimages/mereveal2.gif" alt="GIF">
+  </div>
+</body>
+</html>

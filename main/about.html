@@ -25,19 +25,19 @@
     ================================================== -->
   <script src="js/modernizr.js"></script>
   <link rel="stylesheet" href="css/style.css">
-<script>
-  // Hide gear image when viewport width <= 768px
-  function checkWidth() {
-    const gear = document.getElementById('gear-container');
-    if (window.innerWidth <= 768) {
-      gear.style.display = 'none';
-    } else {
-      gear.style.display = 'block';
+  <script>
+    // Hide gear image when viewport width <= 768px
+    function checkWidth() {
+      const gear = document.getElementById('gear-container');
+      if (window.innerWidth <= 768) {
+        gear.style.display = 'none';
+      } else {
+        gear.style.display = 'block';
+      }
     }
-  }
-  window.addEventListener('resize', checkWidth);
-  window.addEventListener('load', checkWidth);
-</script>
+    window.addEventListener('resize', checkWidth);
+    window.addEventListener('load', checkWidth);
+  </script>
 
 </head>
 
@@ -171,41 +171,42 @@
   <br>
 
 
-<section id="about-us">
-  <div class="container ">
-    <div class="row d-flex align-items-center">
-      <div class="col-lg-6 col-md-12">
-        <div class="image-holder">
-          <img src="newimages/peace.png" alt="single" class="about-image" style="max-width: 400px; width: 100%; height: auto;">
+  <section id="about-us">
+    <div class="container ">
+      <div class="row d-flex align-items-center">
+        <div class="col-lg-6 col-md-12">
+          <div class="image-holder">
+            <img src="newimages/peace.png" alt="single" class="about-image"
+              style="max-width: 400px; width: 100%; height: auto;">
+          </div>
         </div>
-      </div>
-      <div class="col-lg-6 col-md-12">
-        <div class="detail">
-          <div class="display-header">
-            <h2>______________</h2>
-            <h2 class="section-title">About me</h2>
-            <p>I'm a rising star in the technology and engineering fields. I'm skilled in working with
-              modern tech, and I can fix almost any computer problem.
-              <br>
-              Connect with my socials for more info and updates on my latest projects.
-            </p>
-            <a href="https://www.youtube.com/channel/UCKRwq942LARxulnvo34tHww" target="_blank">
-              <img src="newimages/youtube-icon.png" alt="YouTube" class="social-icon">
-            </a>
-            <a href="https://www.instagram.com/willrandby/" target="_blank">
-              <img src="newimages/Instagram-icon.png" alt="Instagram" class="social-icon">
-            </a>
-            <a href="https://www.linkedin.com/in/willrandby/" target="_blank">
-              <img src="newimages/linkedin-icon.png" alt="LinkedIn" class="social-icon">
-            </a>
+        <div class="col-lg-6 col-md-12">
+          <div class="detail">
+            <div class="display-header">
+              <h2>______________</h2>
+              <h2 class="section-title">About me</h2>
+              <p>I'm a rising star in the technology and engineering fields. I'm skilled in working with
+                modern tech, and I can fix almost any computer problem.
+                <br>
+                Connect with my socials for more info and updates on my latest projects.
+              </p>
+              <a href="https://www.youtube.com/channel/UCKRwq942LARxulnvo34tHww" target="_blank">
+                <img src="newimages/youtube-icon.png" alt="YouTube" class="social-icon">
+              </a>
+              <a href="https://www.instagram.com/willrandby/" target="_blank">
+                <img src="newimages/Instagram-icon.png" alt="Instagram" class="social-icon">
+              </a>
+              <a href="https://www.linkedin.com/in/willrandby/" target="_blank">
+                <img src="newimages/linkedin-icon.png" alt="LinkedIn" class="social-icon">
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!--
+  <!--
   <section id="about-us">
     <div class="container ">
       <div class="row d-flex align-items-center">
@@ -269,57 +270,65 @@
 -->
 
 
-<div style="
+  <div style="
   display: flex; 
   justify-content: center; 
   padding: 40px 20px;
 ">
-  <div style="
+    <div style="
     display: flex; 
     align-items: center; 
     gap: 65px; 
     max-width: 900px; 
     width: 100%;
   ">
-    <div id="gear-container" style="
+      <div id="gear-container" style="
       flex: 0 0 auto;
     ">
-      <img src="newimages/gear.png" alt="Gear Icon" style="
+        <img src="newimages/gear.png" alt="Gear Icon" style="
         width: 100px; 
         height: auto; 
         display: block;
       ">
-    </div>
-    <div style="
+      </div>
+      <div style="
       display: flex; 
       flex-direction: column; 
       justify-content: center; 
       flex: 1;
     ">
-      <div style="font-size: 1.2rem; margin-bottom: 0px; color: rgb(209, 177, 255);">Bachelors of Science in Architectural Engineering</div>
-      <div style="font-size: 0.9rem; margin-bottom: 14px; color: inherit; opacity: 0.7;">2024 - University of Nebraska</div>
-      <div style="font-size: 1.2rem; margin-bottom: 0px; color: rgb(209, 177, 255);">Masters of Science in Architectural Engineering</div>
-      <div style="font-size: 0.9rem; margin-bottom: 14px; color: inherit; opacity: 0.7;">2025 - University of Nebraska</div>
-<a href="https://www.credly.com/badges/ded9ee49-5f37-4691-954c-42cbb33c942a" target="_blank" style="font-size: 1.2rem; color: rgb(209, 177, 255); text-decoration: none;">
-  Engineer in Training &quot;EIT&quot;
-</a>
-      <div style="font-size: 0.9rem; margin-bottom: 14px; color: inherit; opacity: 0.7;">Passed the Fundamentals of Engineering Exam</div>
-      <div style="font-size: 1.2rem; margin-bottom: 0px; color: rgb(209, 177, 255);">Part 107 Certified Drone Pilot</div>
-      <div style="font-size: 0.9rem; margin-bottom: 14px; color: inherit; opacity: 0.7;">FAA Certified Commercial Drone Pilot</div>
+        <div style="font-size: 1.2rem; margin-bottom: 0px; color: rgb(209, 177, 255);">Bachelors of Science in
+          Architectural Engineering</div>
+        <div style="font-size: 0.9rem; margin-bottom: 14px; color: inherit; opacity: 0.7;">2024 - University of Nebraska
+        </div>
+        <div style="font-size: 1.2rem; margin-bottom: 0px; color: rgb(209, 177, 255);">Masters of Science in
+          Architectural Engineering</div>
+        <div style="font-size: 0.9rem; margin-bottom: 14px; color: inherit; opacity: 0.7;">2025 - University of Nebraska
+        </div>
+        <a href="https://www.credly.com/badges/ded9ee49-5f37-4691-954c-42cbb33c942a" target="_blank"
+          style="font-size: 1.2rem; color: rgb(209, 177, 255); text-decoration: none;">
+          Engineer in Training &quot;EIT&quot;
+        </a>
+        <div style="font-size: 0.9rem; margin-bottom: 14px; color: inherit; opacity: 0.7;">Passed the Fundamentals of
+          Engineering Exam</div>
+        <div style="font-size: 1.2rem; margin-bottom: 0px; color: rgb(209, 177, 255);">Part 107 Certified Drone Pilot
+        </div>
+        <div style="font-size: 0.9rem; margin-bottom: 14px; color: inherit; opacity: 0.7;">FAA Certified Commercial
+          Drone Pilot</div>
+      </div>
     </div>
   </div>
-</div>       
-<hr>
+  <hr>
 
-<div style="
+  <div style="
   display: flex; 
   justify-content: center; 
   padding: 40px 20px;
   flex-direction: column; 
   align-items: center;
 ">
-  <!-- Title -->
-  <div style="
+    <!-- Title -->
+    <div style="
     font-size: 2rem; 
     font-weight: bold; 
     margin-bottom: 30px;
@@ -329,10 +338,10 @@
     padding: 10px 20px;
     color: rgb(209, 177, 255);
   ">
-    My Experience
-  </div>
-  
-  <div style="
+      My Experience
+    </div>
+
+    <div style="
     display: flex; 
     flex-wrap: wrap;
     justify-content: center; 
@@ -340,53 +349,53 @@
     width: 100%;
     gap: 40px;
   ">
-    <!-- Column 1 -->
-    <div style="flex: 1 1 300px; min-width: 280px;">
-      <div style="font-size: 1.2rem; font-weight: bold; margin-bottom: 10px;">Hardware Development</div>
-      <ul style="padding-left: 20px; margin-top: 0;">
-        <li><a href="" target="_blank">3D Modeling</a></li>
-        <li><a href="" target="_blank">Computers</a></li>
-        <li><a href="" target="_blank">Drones</a></li>
-        <li><a href="" target="_blank">Robotics</a></li>
-        <li><a href="" target="_blank">PCB Prototyping</a></li>
-      </ul>
+      <!-- Column 1 -->
+      <div style="flex: 1 1 300px; min-width: 280px;">
+        <div style="font-size: 1.2rem; font-weight: bold; margin-bottom: 10px;">Tools& Programs</div>
+        <ul style="padding-left: 20px; margin-top: 0;">
+          
+        <li><a target="_blank">Autodesk Fusion</a></li>
+        <li><a target="_blank">Autodesk Revit</a></li>
+        <li><a target="_blank">3DF Zephyr</a></li>
+        <li><a target="_blank">RealityCapture</a></li>
+        <li><a target="_blank">Pix4D</a></li>
+        <li><a target="_blank">Betaflight</a></li>
+        <li><a target="_blank">BlueBeam Revu</a></li>
+        <li><a target="_blank">GitHub</a></li>
+        <li><a target="_blank">Microsoft Teams</a></li>
+        <li><a target="_blank">Proxmox / RDP</a></li>
+        <li><a target="_blank">VS Code</a></li>
+        <li><a target="_blank">Word, Excel, PowerPoint</a></li>
 
-      <div style="font-size: 1.2rem; font-weight: bold; margin-top: 20px; margin-bottom: 10px;">Software Development</div>
-      <ul style="padding-left: 20px; margin-top: 0;">
-        <li><a href="" target="_blank">Github</a></li>
-        <li><a href="" target="_blank">VS Code</a></li>
-        <li><a href="" target="_blank">Python / C</a></li>
-        <li><a href="" target="_blank">HTML / CSS / JS</a></li>
-      </ul>
-    </div>
+        </ul>
+      </div>
 
-    <!-- Column 2, includes links-->
-    <div style="flex: 1 1 300px; min-width: 280px;">
-      <div style="font-size: 1.2rem; font-weight: bold; margin-bottom: 10px;">Tools & Programs</div>
-      <ul style="padding-left: 20px; margin-top: 0;">
-        <!--<li><a href="https://code.visualstudio.com/" target="_blank">Microsoft Teams</a></li>-->
-        <li><a href="" target="_blank">Microsoft Teams</a></li>
-        <li><a href="" target="_blank">Word, Excel, PowerPoint</a></li>
-        <li><a href="" target="_blank">BlueBeam Revu</a></li>
-        <li><a href="" target="_blank">Autodesk Revit</a></li>
-        <li><a href="" target="_blank">Autodesk Fusion</a></li>
-        <li><a href="" target="_blank">Proxmox / RDP</a></li>
-      </ul>
+      <!-- Column 2, includes links-->
+      <div style="flex: 1 1 300px; min-width: 280px;">
+        <div style="font-size: 1.2rem; font-weight: bold; margin-bottom: 10px;">Specialized Skills</div>
+        <ul style="padding-left: 20px; margin-top: 0;">
+          <!--<li><a href="https://code.visualstudio.com/" target="_blank">Microsoft Teams</a></li>-->
+          <li><a target="_blank">3D Modeling</a></li>
+          <li><a target="_blank">Computers</a></li>
+          <li><a target="_blank">Drones</a></li>
+          <li><a target="_blank">Robotics</a></li>
+          <li><a target="_blank">PCB Prototyping</a></li>
+        </ul>
 
-      <div style="font-size: 1.2rem; font-weight: bold; margin-top: 20px; margin-bottom: 10px;">Platforms</div>
-      <ul style="padding-left: 20px; margin-top: 0;">
-        <li><a href="#" target="_blank">Windows</a></li>
-        <li><a href="#" target="_blank">MacOS / iOS</a></li>
-        <li><a href="#" target="_blank">Linux / Android</a></li>
-      </ul>
+        <div style="font-size: 1.2rem; font-weight: bold; margin-top: 20px; margin-bottom: 10px;">Platforms</div>
+        <ul style="padding-left: 20px; margin-top: 0;">
+          <li><a target="_blank">Windows</a></li>
+          <li><a target="_blank">MacOS / iOS</a></li>
+          <li><a target="_blank">Linux / Android</a></li>
+        </ul>
+      </div>
     </div>
   </div>
-</div>
 
 
 
 
-<hr>
+  <hr>
   <section id="latest-blog" class="padding-large">
     <div class="container">
       <div class="section-header d-flex flex-wrap align-items-center justify-content-between">

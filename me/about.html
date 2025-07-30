@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Will Randby - Engineering the Future</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <link rel="stylesheet" type="text/css" href="css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="icomoon/icomoon.css">
+  <link rel="stylesheet" type="text/css" media="all"
+    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="css/vendor.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <!-- script
+    ================================================== -->
+  <script src="js/modernizr.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    // Hide gear image when viewport width <= 768px
+    function checkWidth() {
+      const gear = document.getElementById('gear-container');
+      if (window.innerWidth <= 768) {
+        gear.style.display = 'none';
+      } else {
+        gear.style.display = 'block';
+      }
+    }
+    window.addEventListener('resize', checkWidth);
+    window.addEventListener('load', checkWidth);
+  </script>
+
+</head>
+
+<body>
+
+  <div class="preloader-wrapper">
+    <div class="preloader">
+    </div>
+  </div>
+
+  <div class="search-popup">
+    <div class="search-popup-container">
+
+      <form role="search" method="get" class="search-form" action="">
+        <input type="search" id="search-form" class="search-field" placeholder="Type and press enter" value=""
+          name="s" />
+        <button type="submit" class="search-submit"><a href="#"><i class="icon icon-search"></i></a></button>
+      </form>
+
+      <h5 class="cat-list-title">Browse Categories</h5>
+
+      <ul class="cat-list">
+        <li class="cat-list-item">
+          <a href="shop.html" title="Men Jackets">Men Jackets</a>
+        </li>
+        <li class="cat-list-item">
+          <a href="shop.html" title="Fashion">Fashion</a>
+        </li>
+        <li class="cat-list-item">
+          <a href="shop.html" title="Casual Wears">Casual Wears</a>
+        </li>
+        <li class="cat-list-item">
+          <a href="shop.html" title="Women">Women</a>
+        </li>
+        <li class="cat-list-item">
+          <a href="shop.html" title="Trending">Trending</a>
+        </li>
+        <li class="cat-list-item">
+          <a href="shop.html" title="Hoodie">Hoodie</a>
+        </li>
+        <li class="cat-list-item">
+          <a href="shop.html" title="Kids">Kids</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <header id="header">
+    <div id="header-wrap">
+      <nav class="secondary-nav border-bottom">
+        <div class="container">
+          <div class="row d-flex align-items-center">
+            <ul class="d-flex justify-content-end list-unstyled"></ul>
+            </li>
+            </ul>
+          </div>
+        </div>
+    </div>
+    </nav>
+    <nav class="primary-nav padding-small">
+      <div class="container">
+        <div class="row d-flex align-items-center">
+          <div class="col-lg-2 col-md-2">
+            <div class="mainlogo">
+              <a href="index.html">
+                <img src="newimages/mainlogo.png" alt="logo">
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-10 col-md-10">
+            <div class="navbar">
+
+              <div id="main-nav" class="stellarnav d-flex justify-content-end right">
+                <ul class="menu-list">
+                  <li><a href="index.html" class="item-anchor" data-effect="Home">Home</a></li>
+                  <li><a href="about.html" class="item-anchor active" data-effect="About">About</a></li>
+                  <li><a href="blog.html" class="item-anchor" data-effect="Blog">Creations</a></li>
+                  
+
+                  <!--
+                  <li class="menu-item has-sub">
+                    <a href="shop.html" class="item-anchor d-flex align-item-center" data-effect="Products">Archive</a>
+                  </li>
+                  <li class="menu-item has-sub">
+                    <a href="#" class="item-anchor d-flex align-item-center" data-effect="Pages">Pages<i
+                        class="icon icon-chevron-down"></i></a>
+                    <ul class="submenu">
+                      <li><a href="coming-soon.html" class="item-anchor">Coming soon<span class="text-primary">
+                            (PRO)</span></a></li>
+                      <li><a href="login.html" class="item-anchor">Login<span class="text-primary"> (PRO)</span></a>
+                      </li>
+                      <li><a href="faqs.html" class="item-anchor">FAQs<span class="text-primary"> (PRO)</span></a></li>
+                      <li><a href="styles.html" class="item-anchor">Styles</a></li>
+                      <li><a href="thank-you.html" class="item-anchor">Thankyou</a></li>
+                      <li><a href="error.html" class="item-anchor">Error page<span class="text-primary">
+                            (PRO)</span></a></li>
+                    </ul>
+                  </li>
+                  
+                  <li><a href="contact.html" class="item-anchor" data-effect="Contact">Contact</a></li>
+                -->
+                </ul>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    </div>
+  </header>
+
+  <section class="site-banner jarallax min-height300 padding-large"
+    style="background: url(newimages/heroimage.png) no-repeat;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="page-title">
+            <span style="color: rgb(209, 177, 255);">I'm</span>
+            <span style="color: white;">Will</span>
+          </h1>
+          <div class="breadcrumbs">
+            <span class="item">
+              <a href="index.html" style="color: rgb(209, 177, 255);">Home /</a>
+            </span>
+            <span class="item" style="color: rgb(255, 255, 255);">About</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+  <br>
+
+
+  <section id="about-us">
+    <div class="container ">
+      <div class="row d-flex align-items-center">
+        <div class="col-lg-6 col-md-12">
+          <div class="image-holder">
+            <img src="newimages/peace.png" alt="single" class="about-image"
+              style="max-width: 400px; width: 100%; height: auto;">
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+          <div class="detail">
+            <div class="display-header">
+              <h2>______________</h2>
+              <h2 class="section-title">About me</h2>
+              <p>I'm a rising star in the technology and engineering fields. I'm skilled in working with
+                modern tech, and I can fix almost any computer problem.
+                <br>
+                Connect with my socials for more info and updates on my latest projects.
+              </p>
+              <a href="https://www.youtube.com/channel/UCKRwq942LARxulnvo34tHww" target="_blank">
+                <img src="newimages/youtube-icon.png" alt="YouTube" class="social-icon">
+              </a>
+              <a href="https://www.instagram.com/willrandby/" target="_blank">
+                <img src="newimages/Instagram-icon.png" alt="Instagram" class="social-icon">
+              </a>
+              <a href="https://www.linkedin.com/in/willrandby/" target="_blank">
+                <img src="newimages/linkedin-icon.png" alt="LinkedIn" class="social-icon">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--
+  <section id="about-us">
+    <div class="container ">
+      <div class="row d-flex align-items-center">
+        <div class="col-lg-6 col-md-12">
+          <div class="image-holder">
+            <img src="newimages/peace.png" alt="single" class="about-image" style="max-width: 70; height: auto;">
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+          <div class="detail">
+            <div class="display-header">
+              <h2>
+                __________________________________
+              </h2>
+              <h2 class="section-title">About me</h2>
+              <p>I'm a rising star in the technology and engineering field. I'm skilled in working with
+                modern technology. I can fix almost any computer problem.
+                <br>
+                Connect with my YouTube channel, Instagram, or LinkedIn for more info and updates on my latest projects
+              </p>
+              <a href="https://www.youtube.com/channel/UCKRwq942LARxulnvo34tHww" target="_blank">
+                <img src="newimages/youtube-icon.png" alt="YouTube" class="social-icon">
+              </a>
+              <a href="https://www.instagram.com/willrandby/" target="_blank">
+                <img src="newimages/Instagram-icon.png" alt="Instagram" class="social-icon">
+              </a>
+              <a href="https://www.linkedin.com/in/willrandby/" target="_blank">
+                <img src="newimages/linkedin-icon.png" alt="LinkedIn" class="social-icon">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <section id="testimonials" class="padding-large">
+    <div class="container">
+      <div class="reviews-content">
+        <div class="row d-flex flex-wrap">
+          <div class="col-md-2 review-icon-container" id="gearBox">
+            <div class="review-icon">
+              <img src="newimages/gear.png" class="fixed-gear">
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="testimonial-detail">
+              <p>“Dignissim massa diam elementum habitant fames. Id nullam pellentesque nisi, eget cursus dictumst
+                pharetra, sit. Pulvinar laoreet id porttitor egestas dui urna. Porttitor nibh magna dolor ultrices
+                iaculis sit iaculis.”</p>
+              <div class="author-detail">
+                <div class="name">By Maggie Rio</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+-->
+
+
+  <div style="
+  display: flex; 
+  justify-content: center; 
+  padding: 40px 20px;
+">
+    <div style="
+    display: flex; 
+    align-items: center; 
+    gap: 65px; 
+    max-width: 900px; 
+    width: 100%;
+  ">
+      <div id="gear-container" style="
+      flex: 0 0 auto;
+    ">
+        <img src="newimages/gear.png" alt="Gear Icon" style="
+        width: 100px; 
+        height: auto; 
+        display: block;
+      ">
+      </div>
+      <div style="
+      display: flex; 
+      flex-direction: column; 
+      justify-content: center; 
+      flex: 1;
+    ">
+        <div style="font-size: 1.2rem; margin-bottom: 0px; color: rgb(209, 177, 255);">Bachelors of Science in
+          Architectural Engineering</div>
+        <div style="font-size: 0.9rem; margin-bottom: 14px; color: inherit; opacity: 0.7;">2024 - University of Nebraska
+        </div>
+        <div style="font-size: 1.2rem; margin-bottom: 0px; color: rgb(209, 177, 255);">Masters of Science in
+          Architectural Engineering</div>
+        <div style="font-size: 0.9rem; margin-bottom: 14px; color: inherit; opacity: 0.7;">2025 - University of Nebraska
+        </div>
+        <a href="https://www.credly.com/badges/ded9ee49-5f37-4691-954c-42cbb33c942a" target="_blank"
+          style="font-size: 1.2rem; color: rgb(209, 177, 255); text-decoration: none;">
+          Engineer in Training &quot;EIT&quot;
+        </a>
+        <div style="font-size: 0.9rem; margin-bottom: 14px; color: inherit; opacity: 0.7;">Passed the Fundamentals of
+          Engineering Exam</div>
+        <div style="font-size: 1.2rem; margin-bottom: 0px; color: rgb(209, 177, 255);">Part 107 Certified Drone Pilot
+        </div>
+        <div style="font-size: 0.9rem; margin-bottom: 14px; color: inherit; opacity: 0.7;">FAA Certified Commercial
+          Drone Pilot</div>
+      </div>
+    </div>
+  </div>
+  <hr>
+
+  <div style="
+  display: flex; 
+  justify-content: center; 
+  padding: 40px 20px;
+  flex-direction: column; 
+  align-items: center;
+">
+    <!-- Title -->
+    <div style="
+    font-size: 2rem; 
+    font-weight: bold; 
+    margin-bottom: 30px;
+    text-align: center;
+    border: 2px solid rgb(209, 177, 255); 
+    border-radius: 12px;
+    padding: 10px 20px;
+    color: rgb(209, 177, 255);
+  ">
+      My Experience
+    </div>
+
+    <div style="
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: center; 
+    max-width: 900px; 
+    width: 100%;
+    gap: 40px;
+  ">
+      <!-- Column 1 -->
+      <div style="flex: 1 1 300px; min-width: 280px;">
+        <div style="font-size: 1.2rem; font-weight: bold; margin-bottom: 10px;">Tools& Programs</div>
+        <ul style="padding-left: 20px; margin-top: 0;">
+          
+        <li><a target="_blank">Autodesk Fusion</a></li>
+        <li><a target="_blank">Autodesk Revit</a></li>
+        <li><a target="_blank">3DF Zephyr</a></li>
+        <li><a target="_blank">RealityCapture</a></li>
+        <li><a target="_blank">Pix4D</a></li>
+        <li><a target="_blank">Betaflight</a></li>
+        <li><a target="_blank">BlueBeam Revu</a></li>
+        <li><a target="_blank">GitHub</a></li>
+        <li><a target="_blank">Microsoft Teams</a></li>
+        <li><a target="_blank">Proxmox / RDP</a></li>
+        <li><a target="_blank">VS Code</a></li>
+        <li><a target="_blank">Word, Excel, PowerPoint</a></li>
+
+        </ul>
+      </div>
+
+      <!-- Column 2, includes links-->
+      <div style="flex: 1 1 300px; min-width: 280px;">
+        <div style="font-size: 1.2rem; font-weight: bold; margin-bottom: 10px;">Specialized Skills</div>
+        <ul style="padding-left: 20px; margin-top: 0;">
+          <!--<li><a href="https://code.visualstudio.com/" target="_blank">Microsoft Teams</a></li>-->
+          <li><a target="_blank">3D Modeling</a></li>
+          <li><a target="_blank">Computers</a></li>
+          <li><a target="_blank">Drones</a></li>
+          <li><a target="_blank">Robotics</a></li>
+          <li><a target="_blank">PCB Prototyping</a></li>
+        </ul>
+
+        <div style="font-size: 1.2rem; font-weight: bold; margin-top: 20px; margin-bottom: 10px;">Platforms</div>
+        <ul style="padding-left: 20px; margin-top: 0;">
+          <li><a target="_blank">Windows</a></li>
+          <li><a target="_blank">MacOS / iOS</a></li>
+          <li><a target="_blank">Linux / Android</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <hr>
+  <section id="latest-blog" class="padding-large">
+<div class="container">
+  <div class="section-header d-flex justify-content-center">
+    <div class="btn-wrap">
+      <a href="blog.html" class="d-flex align-items-center" style="font-size: 40px;">
+        View all projects <i class="icon icon icon-arrow-io"></i>
+      </a>
+    </div>
+  </div>
+</div>
+      <div class="row d-flex flex-wrap">
+        <article class="col-md-4 post-item">
+          <div class="image-holder zoom-effect">
+            <a href="single-post.html">
+              <img src="images/post-img1.jpg" alt="post" class="post-image">
+            </a>
+          </div>
+          <div class="post-content d-flex">
+            <div class="meta-date">
+              <div class="meta-day text-primary">22</div>
+              <div class="meta-month">Aug-2021</div>
+            </div>
+            <div class="post-header">
+              <h3 class="post-title">
+                <a href="single-post.html">top 10 casual look ideas to dress up your kids</a>
+              </h3>
+              <a href="blog.html" class="blog-categories">Fashion</a>
+            </div>
+          </div>
+        </article>
+        <article class="col-md-4 post-item">
+          <div class="image-holder zoom-effect">
+            <a href="single-post.html">
+              <img src="images/post-img2.jpg" alt="post" class="post-image">
+            </a>
+          </div>
+          <div class="post-content d-flex">
+            <div class="meta-date">
+              <div class="meta-day text-primary">25</div>
+              <div class="meta-month">Aug-2021</div>
+            </div>
+            <div class="post-header">
+              <h3 class="post-title">
+                <a href="single-post.html">Latest trends of wearing street wears supremely</a>
+              </h3>
+              <a href="blog.html" class="blog-categories">Trending</a>
+            </div>
+          </div>
+        </article>
+        <article class="col-md-4 post-item">
+          <div class="image-holder zoom-effect">
+            <a href="single-post.html">
+              <img src="images/post-img3.jpg" alt="post" class="post-image">
+            </a>
+          </div>
+          <div class="post-content d-flex">
+            <div class="meta-date">
+              <div class="meta-day text-primary">28</div>
+              <div class="meta-month">Aug-2021</div>
+            </div>
+            <div class="post-header">
+              <h3 class="post-title">
+                <a href="single-post.html">types of comfortable clothes ideas for women</a>
+              </h3>
+              <a href="blog.html" class="blog-categories">Inspiration</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+  <script src="js/jquery-1.11.0.min.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/script.js"></script>
+</body>
+
+</html>
