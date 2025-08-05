@@ -27,15 +27,28 @@
     ================================================== -->
   <script src="js/modernizr.js"></script>
   <link rel="stylesheet" href="css/style.css">
+
+
+  
 </head>
+
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    const banner = document.getElementById('site-banner');
+    const gifUrl = "newimages/mereveal2.gif";
+    const jarallaxImg = document.getElementById("jarallax-gif");
+
     const img = new Image();
-    img.src = 'newimages/mereveal2.gif';
+    img.src = gifUrl;
     img.onload = function () {
-      banner.style.backgroundImage = 'url(' + img.src + ')';
+      jarallaxImg.style.backgroundImage = `url('${gifUrl}')`;
+      jarallaxImg.style.opacity = "1";
     };
+
+    // Optional: improve appearance
+    jarallaxImg.style.transition = "opacity 1s ease";
+    jarallaxImg.style.backgroundSize = "cover";
+    jarallaxImg.style.backgroundPosition = "center";
+    jarallaxImg.style.backgroundRepeat = "no-repeat";
   });
 </script>
 <body>
@@ -143,8 +156,9 @@
     </div>
   </header>
 
-<section id="site-banner" class="site-banner jarallax min-height300 padding-large"
-  style="background-color: transparent; background-size: cover; background-position: center;">
+<section id="site-banner" class="site-banner jarallax min-height300 padding-large" data-jarallax data-speed="0.5">
+  <div class="jarallax-img" id="jarallax-gif" style="opacity: 0;"></div>
+
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -159,8 +173,7 @@
               border: 4px solid rgb(209, 177, 255);
               border-radius: 20px;
               font-size: 2em;
-              text-decoration: none;
-            ">
+              text-decoration: none;">
             <span style="color: rgb(209, 177, 255);">Learn </span>
             <span style="color: rgb(255, 255, 255);">More</span>
           </a>
@@ -169,6 +182,7 @@
     </div>
   </div>
 </section>
+
 
   <section id="featured-products" class="product-store padding-large">
     <div class="container">
